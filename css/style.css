@@ -1,451 +1,578 @@
- :root {
-            --primary-color: #2c3e50;
-            --secondary-color: #3498db;
-            --accent-color: #e74c3c;
-            --light-color: #ecf0f1;
-            --dark-color: #2c3e50;
-            --text-color: #333;
-            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: var(--text-color);
-            background-color: #f9f9f9;
-        }
-        
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 15px;
-        }
-        
-        /* Шапка */
-        header {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 1rem 0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: var(--shadow);
-        }
-        
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .logo {
-            font-size: 1.8rem;
-            font-weight: bold;
-        }
-        
-        .logo span {
-            color: var(--secondary-color);
-        }
-        
-        nav ul {
-            display: flex;
-            list-style: none;
-        }
-        
-        nav ul li {
-            margin-left: 1.5rem;
-        }
-        
-        nav ul li a {
-            color: white;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        
-        nav ul li a:hover {
-            color: var(--secondary-color);
-        }
-        
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            color: white;
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-        
-        /* Герой секция */
-        .hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
-                        url('../img/XXXL.webp');
-            background-size: cover;
-            background-position: center;
-            color: white;
-            text-align: center;
-            padding: 6rem 0;
-        }
-        
-        .hero h1 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-        
-        .hero p {
-            font-size: 1.2rem;
-            max-width: 700px;
-            margin: 0 auto 2rem;
-        }
-        
-        .btn {
-            display: inline-block;
-            background-color: var(--secondary-color);
-            color: white;
-            padding: 0.8rem 1.5rem;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: background-color 0.3s;
-            margin-bottom: 20px;
-        }
-        
-        .btn:hover {
-            background-color: #2980b9;
-        }
-        
-        /* Секции */
-        section {
-            padding: 4rem 0;
-        }
-        
-        section h2 {
-            text-align: center;
-            margin-bottom: 2rem;
-            color: var(--primary-color);
-            position: relative;
-        }
-        
-        section h2:after {
-            content: '';
-            display: block;
-            width: 80px;
-            height: 3px;
-            background-color: var(--secondary-color);
-            margin: 0.5rem auto;
-        }
-        
-        /* О нас */
-        .about-content {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            gap: 2rem;
-        }
-        
-        .about-text {
-            flex: 1;
-            min-width: 300px;
-        }
-        
-        .about-image {
-            flex: 1;
-            min-width: 300px;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-        }
-        
-        .about-image img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-        
-        /* Номера */
-        .rooms {
-            background-color: var(--light-color);
-        }
-        
-        .rooms-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-        
-        .room-card {
-            background-color: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: transform 0.3s;
-        }
+/* ===== CSS Variables ===== */
+:root {
+    --primary-color: #2c3e50;
+    --secondary-color: #3498db;
+    --accent-color: #e74c3c;
+    --light-color: #ecf0f1;
+    --dark-color: #2c3e50;
+    --text-color: #333;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --border-radius: 8px;
+    --transition: all 0.3s ease;
+}
 
-        
-        .room-card:hover {
-            transform: translateY(-10px);
-        }
-        
-        .room-image {
-            height: 200px;
-            overflow: hidden;
-        }
-        
-        .room-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s;
-        }
-        
-        .room-card:hover .room-image img {
-            transform: scale(1.1);
-        }
-        
-        .room-info {
-            padding: 1.5rem;
-            display: flex;
-            height: calc(100% - 200px);
-            flex-direction: column;
-        }
-        
-        .room-info h3 {
-            margin-bottom: 0.5rem;
-            color: var(--primary-color);
-        }
+/* ===== Base Styles ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        .room-info .btn {
-            margin-top: auto;
-            align-self: flex-start;
-        }
-        
-        .room-features {
-            list-style: none;
-            margin: 1rem 0;
-        }
-        
-        .room-features li {
-            margin-bottom: 0.5rem;
-            display: flex;
-            align-items: center;
-        }
-        
-        .room-features li:before {
-            content: '✓';
-            color: var(--secondary-color);
-            margin-right: 0.5rem;
-            font-weight: bold;
-        }
-        
-        /* Услуги */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 1.5rem;
-        }
-        
-        .service-item {
-            background-color: white;
-            padding: 1.5rem;
-            border-radius: 10px;
-            text-align: center;
-            box-shadow: var(--shadow);
-            transition: transform 0.3s;
-        }
-        
-        .service-item:hover {
-            transform: translateY(-5px);
-        }
-        
-        .service-icon {
-            font-size: 2.5rem;
-            color: var(--secondary-color);
-            margin-bottom: 1rem;
-        }
-        
-        /* Окрестности */
-        .attractions {
-            background-color: var(--light-color);
-        }
-        
-        .attractions-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-        
-        .attraction-card {
-            background-color: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-        }
-        
-        .attraction-image {
-            height: 200px;
-        }
-        
-        .attraction-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        
-        .attraction-info {
-            padding: 1.5rem;
-        }
-        
-        /* Контакты */
-        .contact-content {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 2rem;
-        }
-        
-        .contact-info {
-            flex: 1;
-            min-width: 300px;
-        }
-        
-        .contact-details {
-            margin-top: 1.5rem;
-        }
-        
-        .contact-details p {
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-        }
-        
-        .contact-details i {
-            margin-right: 0.5rem;
-            color: var(--secondary-color);
-        }
-        
-        .contact-form {
-            flex: 1;
-            min-width: 300px;
-        }
-        
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: bold;
-        }
-        
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 0.8rem;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-family: inherit;
-        }
-        
-        .form-group textarea {
-            height: 150px;
-            resize: vertical;
-        }
-        
-        /* Футер */
-        footer {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 3rem 0 1rem;
-        }
-        
-        .footer-content {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-        
-        .footer-section {
-            flex: 1;
-            min-width: 250px;
-        }
-        
-        .footer-section h3 {
-            margin-bottom: 1.5rem;
-            position: relative;
-        }
-        
-        .footer-section h3:after {
-            content: '';
-            display: block;
-            width: 40px;
-            height: 2px;
-            background-color: var(--secondary-color);
-            margin-top: 0.5rem;
-        }
-        
-        .footer-links {
-            list-style: none;
-        }
-        
-        .footer-links li {
-            margin-bottom: 0.8rem;
-        }
-        
-        .footer-links a {
-            color: #ddd;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        
-        .footer-links a:hover {
-            color: var(--secondary-color);
-        }
-        
-        .copyright {
-            text-align: center;
-            padding-top: 1.5rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        /* Адаптивность */
-        @media (max-width: 768px) {
-            .mobile-menu-btn {
-                display: block;
-            }
-            
-            nav ul {
-                display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background-color: var(--primary-color);
-                flex-direction: column;
-                padding: 1rem 0;
-                text-align: center;
-            }
-            
-            nav ul.show {
-                display: flex;
-            }
-            
-            nav ul li {
-                margin: 0.5rem 0;
-            }
-            
-            .hero h1 {
-                font-size: 2rem;
-            }
-            
-            .hero p {
-                font-size: 1rem;
-            }
-        }
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: #f9f9f9;
+    padding-top: 70px; /* Отступ для фиксированного хедера */
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* ===== Common Section Styles ===== */
+section {
+    padding: 80px 0;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 50px;
+    color: var(--primary-color);
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 4px;
+    background-color: var(--secondary-color);
+    margin: 15px auto;
+    border-radius: 2px;
+}
+
+.section-light {
+    background-color: var(--light-color);
+}
+
+/* ===== Header Styles ===== */
+.main-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: transparent; /* Полностью прозрачный фон */
+    z-index: 1000;
+    transition: var(--transition);
+    min-height: 70px;
+    display: flex;
+    align-items: center;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 0;
+    width: 100%;
+}
+
+.logo-img {
+    height: 60px;
+    width: auto;
+    transition: var(--transition);
+}
+
+.logo-img:hover {
+    transform: scale(1.05);
+}
+
+/* ===== Navigation Styles ===== */
+.main-nav ul {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+}
+
+.main-nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 8px 16px;
+    border-radius: var(--border-radius);
+    transition: var(--transition);
+    font-size: 14px;
+    background: rgba(255, 255, 255, 0.1); /* Полупрозрачный фон для ссылок */
+    backdrop-filter: blur(10px);
+}
+
+.main-nav a:hover {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    transform: translateY(-2px);
+}
+
+.mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: var(--border-radius);
+    backdrop-filter: blur(10px);
+}
+
+/* ===== Hero Section ===== */
+.hero-section {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+                url('../img/XXXL.webp');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: white;
+    padding: 180px 0 100px;
+    text-align: center;
+    margin-top: -70px; /* Компенсируем padding-top body */
+    position: relative;
+}
+
+.hero-title {
+    font-size: 48px;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.hero-description {
+    font-size: 20px;
+    max-width: 700px;
+    margin: 0 auto 30px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* ===== Button Styles ===== */
+.btn {
+    display: inline-block;
+    padding: 12px 30px;
+    border-radius: var(--border-radius);
+    text-decoration: none;
+    font-weight: bold;
+    text-align: center;
+    transition: var(--transition);
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.btn-primary {
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #2980b9;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.btn-secondary {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.btn-secondary:hover {
+    background-color: #1a252f;
+    transform: translateY(-2px);
+}
+
+/* ===== About Section ===== */
+.about-content {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+
+.about-text {
+    flex: 1;
+}
+
+.about-text p {
+    margin-bottom: 20px;
+    font-size: 16px;
+    line-height: 1.8;
+}
+
+.about-image {
+    flex: 1;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+}
+
+.about-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: var(--transition);
+}
+
+.about-image img:hover {
+    transform: scale(1.02);
+}
+
+/* ===== Grid Layouts ===== */
+.rooms-grid,
+.services-grid,
+.attractions-grid {
+    display: grid;
+    gap: 30px;
+}
+
+.rooms-grid,
+.attractions-grid {
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+}
+
+.services-grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+/* ===== Card Common Styles ===== */
+.room-card,
+.service-item,
+.attraction-card {
+    background-color: white;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+}
+
+.room-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+.service-item:hover,
+.attraction-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* ===== Image Styles ===== */
+.room-image,
+.attraction-image {
+    height: 250px;
+    overflow: hidden;
+}
+
+.service-item {
+    padding: 30px;
+    text-align: center;
+}
+
+.attraction-image {
+    height: 220px;
+}
+
+.room-image img,
+.attraction-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transition);
+}
+
+.room-card:hover .room-image img {
+    transform: scale(1.1);
+}
+
+/* ===== Content Styles ===== */
+.room-info,
+.attraction-info {
+    padding: 25px;
+}
+
+.room-info {
+    display: flex;
+    flex-direction: column;
+    height: calc(100% - 250px);
+}
+
+.room-title,
+.attraction-title,
+.service-title {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+.room-title {
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+.attraction-title,
+.service-title {
+    font-size: 20px;
+}
+
+.room-area {
+    color: #666;
+    margin-bottom: 15px;
+    font-weight: 500;
+}
+
+.room-features {
+    list-style: none;
+    margin: 15px 0;
+    flex-grow: 1;
+}
+
+.room-features li {
+    margin-bottom: 8px;
+    padding-left: 20px;
+    position: relative;
+}
+
+.room-features li::before {
+    content: '✓';
+    color: var(--secondary-color);
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+}
+
+.room-info .btn {
+    margin-top: auto;
+    align-self: flex-start;
+}
+
+.service-icon {
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+
+.service-description,
+.attraction-description {
+    color: #666;
+    line-height: 1.6;
+}
+
+/* ===== Rooms Section ===== */
+.rooms-section {
+    background-color: var(--light-color);
+}
+
+/* ===== Attractions Section ===== */
+.attractions-section {
+    background-color: var(--light-color);
+}
+
+/* ===== Contact Section ===== */
+.contact-content {
+    display: flex;
+    gap: 50px;
+}
+
+.contact-info {
+    flex: 1;
+}
+
+.contact-subtitle {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: var(--primary-color);
+}
+
+.contact-description {
+    margin-bottom: 25px;
+    color: #666;
+}
+
+.contact-details p {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.contact-form {
+    flex: 1;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #e0e0e0;
+    border-radius: var(--border-radius);
+    font-family: inherit;
+    font-size: 16px;
+    transition: var(--transition);
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+}
+
+.form-group textarea {
+    height: 120px;
+    resize: vertical;
+}
+
+/* ===== Footer Styles ===== */
+.main-footer {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 50px 0 20px;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    margin-bottom: 30px;
+}
+
+.footer-title {
+    font-size: 20px;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.footer-title::after {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 2px;
+    background-color: var(--secondary-color);
+    margin-top: 10px;
+}
+
+.footer-description {
+    color: #ccc;
+    line-height: 1.6;
+}
+
+.footer-links {
+    list-style: none;
+}
+
+.footer-links li {
+    margin-bottom: 12px;
+}
+
+.footer-links a {
+    color: #ccc;
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.footer-links a:hover {
+    color: var(--secondary-color);
+    padding-left: 5px;
+}
+
+.copyright {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    color: #ccc;
+}
+
+/* ===== Responsive Design ===== */
+@media (max-width: 768px) {
+    .mobile-menu-btn {
+        display: block;
+    }
+
+    .main-nav ul {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: rgba(44, 62, 80, 0.95);
+        flex-direction: column;
+        padding: 20px 0;
+        text-align: center;
+        backdrop-filter: blur(10px);
+    }
+
+    .main-nav ul.show {
+        display: flex;
+    }
+
+    .main-nav li {
+        margin: 10px 0;
+    }
+
+    .hero-title {
+        font-size: 36px;
+    }
+
+    .hero-description {
+        font-size: 18px;
+    }
+
+    .about-content,
+    .contact-content {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .rooms-grid,
+    .services-grid,
+    .attractions-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .section-title {
+        font-size: 28px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: 28px;
+    }
+
+    .hero-description {
+        font-size: 16px;
+    }
+
+    .section-title {
+        font-size: 24px;
+    }
+
+    .container {
+        width: 95%;
+    }
+
+    .room-image,
+    .attraction-image {
+        height: 200px;
+    }
+}
