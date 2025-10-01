@@ -101,32 +101,79 @@ section {
 .main-nav a {
     color: white;
     text-decoration: none;
-    font-weight: 500;
-    padding: 8px 16px;
+    font-weight: 600;
+    padding: 10px 20px;
     border-radius: var(--border-radius);
     transition: var(--transition);
     font-size: 14px;
-    background: rgba(255, 255, 255, 0.1); /* Полупрозрачный фон для ссылок */
+    background: rgba(44, 62, 80, 0.5);
     backdrop-filter: blur(10px);
 }
 
 .main-nav a:hover {
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(52, 152, 219, 0.5);
     color: white;
     transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(52, 152, 219, 0.3);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* ===== Mobile Menu Styles ===== */
+.mobile-menu-toggle {
+    display: none;
 }
 
 .mobile-menu-btn {
     display: none;
-    background: none;
-    border: none;
-    color: white;
-    font-size: 24px;
-    cursor: pointer;
-    padding: 8px;
-    background: rgba(255, 255, 255, 0.1);
+    flex-direction: column;
+    justify-content: space-between;
+    width: 38px;
+    height: 34px;
+    background: rgba(44, 62, 80, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: var(--border-radius);
+    cursor: pointer;
+    padding: 10px 8px;
+    z-index: 1001;
     backdrop-filter: blur(10px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    transition: var(--transition);
+}
+
+.mobile-menu-btn:hover {
+    background: rgba(52, 152, 219, 0.5);
+    border-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 6px 16px rgba(52, 152, 219, 0.3);
+}
+
+.mobile-menu-btn span {
+    display: block;
+    height: 3px;
+    width: 100%;
+    background-color: white;
+    border-radius: 3px;
+    transition: var(--transition);
+    transform-origin: center;
+}
+
+/* Анимация бургер-иконки */
+#mobile-menu-toggle:checked ~ .mobile-menu-btn {
+    background: rgba(231, 76, 60, 0.5); /* Красный цвет когда меню открыто */
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+#mobile-menu-toggle:checked ~ .mobile-menu-btn span:nth-child(1) {
+    transform: rotate(45deg) translate(8px, 8px);
+    background-color: white;
+}
+
+#mobile-menu-toggle:checked ~ .mobile-menu-btn span:nth-child(2) {
+    opacity: 0;
+}
+
+#mobile-menu-toggle:checked ~ .mobile-menu-btn span:nth-child(3) {
+    transform: rotate(-45deg) translate(8px, -8px);
+    background-color: white;
 }
 
 /* ===== Hero Section ===== */
@@ -369,6 +416,9 @@ section {
     background-color: var(--light-color);
 }
 
+/* ===== Services Section ===== */
+/* Стили уже определены выше в общих классах */
+
 /* ===== Attractions Section ===== */
 .attractions-section {
     background-color: var(--light-color);
@@ -505,28 +555,68 @@ section {
 /* ===== Responsive Design ===== */
 @media (max-width: 768px) {
     .mobile-menu-btn {
-        display: block;
-    }
-
-    .main-nav ul {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        background-color: rgba(44, 62, 80, 0.95);
-        flex-direction: column;
-        padding: 20px 0;
-        text-align: center;
-        backdrop-filter: blur(10px);
-    }
-
-    .main-nav ul.show {
         display: flex;
     }
 
+    .main-nav ul {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 80%;
+        max-width: 200px;
+        background-color: rgba(44, 62, 80, 0.4);
+        backdrop-filter: blur(20px);
+        border-radius: var(--border-radius);
+        flex-direction: column;
+        padding: 80px 20px 20px;
+        text-align: left;
+        transition: var(--transition);
+        z-index: 999;
+        margin: 0;
+    }
+
     .main-nav li {
-        margin: 10px 0;
+        margin: 0;
+        opacity: 0;
+        transform: translateX(50px);
+        transition: all 0.3s ease;
+    }
+
+    .main-nav li:nth-child(1) { transition-delay: 0.1s; }
+    .main-nav li:nth-child(2) { transition-delay: 0.2s; }
+    .main-nav li:nth-child(3) { transition-delay: 0.3s; }
+    .main-nav li:nth-child(4) { transition-delay: 0.4s; }
+    .main-nav li:nth-child(5) { transition-delay: 0.5s; }
+
+    .main-nav a {
+        display: block;
+        padding: 15px 20px;
+        font-size: 18px;
+        border-radius: var(--border-radius);
+        margin-bottom: 10px;
+        background: rgba(255, 255, 255, 0.1);
+    }
+
+    /* Показываем меню когда чекбокс отмечен */
+    #mobile-menu-toggle:checked ~ .main-nav ul {
+        right: 0;
+    }
+
+    #mobile-menu-toggle:checked ~ .main-nav li {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    /* Затемнение фона когда меню открыто */
+    #mobile-menu-toggle:checked ~ .main-nav::before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 998;
     }
 
     .hero-title {
@@ -574,5 +664,9 @@ section {
     .room-image,
     .attraction-image {
         height: 200px;
+    }
+
+    .hero-section {
+        padding: 120px 0 80px;
     }
 }
