@@ -19,7 +19,7 @@
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: "Alan Sans", sans-serif;
     line-height: 1.6;
     color: var(--text-color);
     background-color: #f9f9f9;
@@ -65,7 +65,11 @@ section {
     top: 0;
     left: 0;
     width: 100%;
-    background: transparent; /* Полностью прозрачный фон */
+    background: rgba(7, 42, 35, 0.7); /* Темно-изумрудный */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    border-bottom: 1px solid rgba(46, 125, 50, 0.2);
     z-index: 1000;
     transition: var(--transition);
     min-height: 70px;
@@ -77,14 +81,14 @@ section {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 5px 0;
     width: 100%;
+    padding-left: 15px;
 }
 
 .logo-img {
-    height: 60px;
-    width: auto;
+    width: 130px;
     transition: var(--transition);
+    margin-top: 10px;
 }
 
 .logo-img:hover {
@@ -253,6 +257,7 @@ section {
     margin-bottom: 20px;
     font-size: 16px;
     line-height: 1.8;
+    text-align: justify;
 }
 
 .about-image {
@@ -411,6 +416,9 @@ section {
     line-height: 1.6;
 }
 
+.attraction-description {
+    text-align: justify;
+}
 /* ===== Rooms Section ===== */
 .rooms-section {
     background-color: var(--light-color);
@@ -554,14 +562,34 @@ section {
 
 /* ===== Responsive Design ===== */
 @media (max-width: 768px) {
+    .header-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
+    }
+}
+@media (max-width: 768px) {
     .mobile-menu-btn {
         display: flex;
+        margin-right: 10px;
+    }
+
+    .logo {
+        position: static;
+        transform: none;
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        padding: 0;
+        margin: 0;
+        margin-left: 40px;
     }
 
     .main-nav ul {
         position: fixed;
         top: 0;
-        right: -100%;
+        right: -50%;
         width: 80%;
         max-width: 200px;
         background-color: rgba(44, 62, 80, 0.4);
@@ -594,7 +622,8 @@ section {
         font-size: 18px;
         border-radius: var(--border-radius);
         margin-bottom: 10px;
-        background: rgba(255, 255, 255, 0.1);
+        background: rgba(44, 62, 80, 0.5);
+;
     }
 
     /* Показываем меню когда чекбокс отмечен */
